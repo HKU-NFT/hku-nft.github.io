@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include head.html %}
+
+<body>
+
+    {% if page.show_nav != false %}
+        {% include nav.html %}
+    {% endif %}
+    {{ content }}
+    {% include footer.html %}
+</body>
+
+</html>

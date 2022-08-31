@@ -1,0 +1,41 @@
+---
+layout: default
+show_nav: false
+---
+
+<section class="hero is-danger is-bold slogan-hero">
+    <div class="hero-head">
+        {% include nav.html %}
+    </div>
+</section>
+
+<script>
+    window.onload = () => {
+        document.querySelectorAll(".menu").forEach(menu => {
+            menu.querySelectorAll('a').forEach(atag => {
+                console.log(atag.target)
+                atag.onclick = () => {
+                    menu.querySelector('a.is-active').classList.remove('is-active');
+                    atag.classList.add('is-active');
+                    menu.parentElement.nextElementSibling.querySelector(".what-hero-detail.is-active").classList.remove("is-active");
+                    menu.parentElement.nextElementSibling.querySelector("#" + atag.text.replaceAll(" ", "-")).classList.add("is-active");
+                }
+            })
+        })
+    }
+</script>
+
+<section class="hero">
+    <div class="hero-body pt-4">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8 is-offset-1">
+                    <div class="is-active what-hero-detail">
+                        {% include visual/first_figure.html %}
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

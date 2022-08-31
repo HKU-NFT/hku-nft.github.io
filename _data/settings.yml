@@ -1,0 +1,29 @@
+# If you are not using Google Analytics, please change 'google-ID' to an empty string
+google-ID: UA-193192572-1
+# disqus-ID: x
+# utterances-repo: x
+
+links:
+  slack: https://www.hkubs.hku.hk/people/yang-you/
+
+assets:
+  logo: '/assets/site/lp-logo.svg'
+  badge: '/assets/site/lp-badge-white.svg'
+
+menu:
+- {name: 'Home', file: '/'}
+- {name: 'NFT Data', file: '/nft_data.html'}
+- {name: 'Docs', file: '/doc.html'}
+- {name: 'Contact Us', file: '/contact_us.html'}
+
+social:
+# - {name: 'slack', icon: 'fab fa-slack-hash', link: ''}
+# - {name: 'Github', icon: 'fab fa-github', link: 'https://www.hkubs.hku.hk/people/yang-you/'}
+
+tutorials:
+  categories:
+    - {name: 'starter', title: 'Starter Example'}
+    - {name: 'usecase', title: 'Use Cases'}
+
+footnote: >
+  Created and maintained by [HKU CFID](https://cfid.hkubs.hku.hk/). Built with [jekyll](https://jekyllrb.com/), [bulma](http://bulma.io/), and [Layout Parser](https://github.com/Layout-Parser/Layout-Parser.github.io).
