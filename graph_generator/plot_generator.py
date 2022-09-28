@@ -12,12 +12,13 @@ bar_df = pd.read_csv(data_path, index_col = False)
 bar_df['Txn'] = bar_df['Txn'].apply(lambda x : round(x*100,2))
 #create bar
 fig_0 = px.line(x = bar_df['Tc'], y = bar_df['Txn'], title="Trade count for NFT")
-fig_0.update_layout(yaxis={'title':'Percentage'},
-                xaxis={'title':'Trade count'})
 fig_0.add_scatter(x = bar_df['Tc'], y = bar_df['Txn'],name = "Trade count percentage trend")
 fig_0.add_bar(x = bar_df['Tc'], y = bar_df['Txn'], name = "Trade count percentage distribution")
 fig_0.update_traces(textfont_size=20, hovertemplate='Percentage on all traded tokens: %{y} <br>Number of trade: %{x} <extra></extra>')
-#fig.show()
+fig_0.update_layout(yaxis={'title':'Percentage'},
+                xaxis={'title':'Trade count'},
+                showlegend=False)
+#fig_0.show()
 
 ######################(T1B)#################################################
 data_path = path.join(root_dir, 'T1B.csv')
@@ -42,8 +43,11 @@ fig_2.add_trace(go.Heatmap(z=df_win,x=trade_count_after_buy_in, y=trade_count, h
 fig_2.update_layout(title="Winning probability conditional on been trade",
                     xaxis={"title":"Number of trade after initial buy in"},
                     yaxis={"title": "Total trade count (including initial buy in)"})
-fig_2.update_traces(textfont_size=20, hovertemplate='Total trade count (including initial buy in): %{y} <br>Number of trade after initial buy in: %{x} th <br>Wining probability: %{z} <extra></extra>')
-#fig_1.show()
+fig_2.update_traces(textfont_size=20, 
+                    text=df_win,
+                    texttemplate="%{text}",
+                    hovertemplate='Total trade count (including initial buy in): %{y} <br>Number of trade after initial buy in: %{x} th <br>Wining probability: %{z} <extra></extra>')
+fig_2.show()
 #fig_1.write_html('text.html')
 #heatmap(gross return)
 trade_count = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
@@ -131,11 +135,11 @@ fig_6.update_layout(title="Turnover at Specific Time",
 #fig_5.show()
 
 ##################Export HTML##########################################
-with open('chart.html', 'a') as f:
+'''with open('chart.html', 'a') as f:
     f.write(fig_0.to_html(full_html=False, include_plotlyjs='cnd'))
     f.write(fig_1.to_html(full_html=False, include_plotlyjs='cnd'))
     f.write(fig_2.to_html(full_html=False, include_plotlyjs='cnd'))
     f.write(fig_3.to_html(full_html=False, include_plotlyjs='cnd'))
     f.write(fig_4.to_html(full_html=False, include_plotlyjs='cnd'))
     f.write(fig_5.to_html(full_html=False, include_plotlyjs='cnd'))
-    f.write(fig_6.to_html(full_html=False, include_plotlyjs='cnd'))
+    f.write(fig_6.to_html(full_html=False, include_plotlyjs='cnd'))'''
