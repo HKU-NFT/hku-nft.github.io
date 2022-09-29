@@ -45,24 +45,22 @@ fig_2.add_trace(go.Heatmap(z=df_win,x=trade_count_after_buy_in, y=trade_count, h
 fig_2.update_layout(title="Winning probability conditional on been trade",
                     xaxis={"title":"Number of trade after initial buy in"},
                     yaxis={"title": "Total trade count (including initial buy in)"})
-fig_2.update_traces(textfont_size=20, 
-                    text=df_win,
+fig_2.update_traces(text=df_win,
                     texttemplate="%{text}",
                     hovertemplate='Total trade count (including initial buy in): %{y} <br>Number of trade after initial buy in: %{x} th <br>Wining probability: %{z} <extra></extra>')
 #fig_2.show()
 
 #heatmap(gross return)
-trade_count = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
-trade_count_after_buy_in = ["2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th"]
-df_return = pd.read_csv(path.join(root_dir, 'T1C_Return.csv')).loc[:,'2':'10'].apply(lambda x : round(x, 2))
+trade_count = ["2", "3", "4", "5", "6", "7", "8", "9", "10"]
+trade_count_after_buy_in = ["1st","2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th"]
+df_return = pd.read_csv(path.join(root_dir, 'T1C_Return.csv')).loc[1:,'2':'10'].apply(lambda x : round(x, 2))
 df_return.fillna('', inplace=True)
 fig_3 = go.Figure()
 fig_3.add_trace(go.Heatmap(z=df_return,x=trade_count_after_buy_in, y=trade_count, hoverongaps=False))
 fig_3.update_layout(title="Token average gross return",
-                    xaxis={"title":"Number of trade afer initial buy in"},
+                    xaxis={"title":"Number of trade after initial buy in"},
                     yaxis={"title": "Total trade count (including initial buy in)"})
-fig_3.update_traces(textfont_size = 20,
-                    text=df_return,
+fig_3.update_traces(text=df_return,
                     texttemplate="%{text}",
                     hovertemplate='Total trade count (including initial buy in): %{y} <br>Number of trade after initial buy in: %{x} th <br>Gross return: %{z} <extra></extra>')
 #fig_3.show()
